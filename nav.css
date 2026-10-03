@@ -1,0 +1,447 @@
+/* =====================================================
+   WIRELAB — DARK THEME
+===================================================== */
+:root {
+    /* PAGE BACKGROUND */
+    --wire-bg: #0d111b;
+
+    /* SURFACES */
+    --wire-surface: #10d040;
+    --wire-hover-surface: rgba(21, 28, 36, 0.72);
+    --wire-nav-surface: rgba(13, 17, 27, 0.702); /* Controls navbar color */
+
+    /* TEXT */
+    --wire-text: #676558;
+    --wire-text-muted: #aea99a;
+
+    /* ACCENT */
+    --wire-accent: #D99A2B;
+    --wire-accent-bright: #6d6d5c;
+    --wire-accent-glow: rgba(185, 145, 185, 0.894);
+    --wire-accent-glow-soft: rgba(242, 184, 75, 0.18);
+    --wire-accent-glow-subtle: rgba(217, 154, 43, 0.10);
+
+    /* BORDERS */
+    --wire-border: #1c2f4f;
+
+    /* SHADOWS */
+    --wire-shadow: rgba(0, 0, 0, 0.45);
+    --wire-text-glow: rgba(230, 233, 236, 0.08);
+    --wire-highlight: rgba(255, 255, 255, 0.10);
+}
+
+
+/* =====================================================
+   LIGHT THEME
+===================================================== */
+[data-theme="light"] {
+    --wire-bg: #a49f90;
+
+    --wire-surface: #FFFFFF;
+    --wire-hover-surface: rgba(187, 178, 161, 0.72);
+    --wire-nav-surface: rgba(205, 201, 187, 0.72);
+
+    --wire-text: #403d27;
+    --wire-text-muted: #5F6B73;
+    --wire-text-glow: rgba(23, 32, 41, 0.08);
+
+    --wire-accent: #fcfdfc;
+    --wire-accent-bright: #80643b;
+    --wire-accent-glow: rgba(217, 146, 36, 0.45);
+    --wire-accent-glow-soft: rgba(217, 146, 36, 0.16);
+    --wire-accent-glow-subtle: rgba(184, 117, 22, 0.10);
+
+    --wire-border: rgba(184, 117, 22, 0.30);
+
+    --wire-shadow: rgba(0, 0, 0, 0.16);
+    --wire-highlight: rgba(255, 255, 255, 0.55);
+}
+
+/* =====================================================
+   WIRELAB — GLOBAL NAVIGATION
+===================================================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+} /* Makes images responsive so they don't become wider than the available space */
+
+
+/* =====================================================
+   GLOBAL BODY
+===================================================== */
+body {
+    margin: 0;
+    padding-top: 50px;
+    background-color: var(--wire-bg);
+    color: var(--wire-text);
+}
+
+
+/* =====================================================
+  SITE HEADER
+===================================================== */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+
+    padding: 5px 6px;
+    z-index: 9999;
+    background: transparent;
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+.navbar {
+    width: 100%;
+    max-width: 1600px;
+    height: 35px;
+    min-width: 0;
+
+    margin: 0 auto;
+    padding: 0 9px;
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+
+    border: 1px solid var(--wire-border);
+    background: var(--wire-nav-surface);
+
+    clip-path:
+        polygon(
+            10px 0,
+            calc(100% - 10px) 0,
+            100% 10px,
+            100% calc(100% - 10px),
+            calc(100% - 10px) 100%,
+            10px 100%,
+            0 calc(100% - 10px),
+            0 10px
+        );
+        
+    pointer-events: auto;
+    overflow: hidden;
+}
+
+/* =====================================================
+   GOLD TECH LINE
+===================================================== */
+
+.navbar::before {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--wire-accent) 30%,
+            var(--wire-accent-bright) 50%,
+            var(--wire-accent) 70%,
+            transparent
+        );
+
+    opacity: 0.7;
+}
+
+/* =====================================================
+   SUBTLE TECH GLOW
+===================================================== */
+
+.navbar::after {
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 100px;
+
+    left: 20%;
+    top: -70px;
+
+    background:
+        radial-gradient(
+            ellipse,
+            var(--wire-accent-glow-subtle),
+            transparent 70%
+        );
+
+    pointer-events: none;
+}
+
+/* =====================================================
+   BRAND
+===================================================== */
+
+.brand {
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+
+    flex: 0 0 auto;
+    min-width: 0;
+
+    position: relative;
+    z-index: 2;
+    transform: translateX(-6px);
+}
+
+/* =====================================================
+   BRAND Lightning ICON
+===================================================== */
+
+.brand-icon {
+    flex: 0 0 auto;
+
+    font-size: 15px;
+    line-height: 1;
+
+    color: var(--wire-accent-bright);
+
+    filter:
+        drop-shadow(0 0 5px var(--wire-accent-glow))
+        drop-shadow(0 0 15px var(--wire-accent-glow-soft));
+}
+
+/* =====================================================
+   WIRELAB WORDMARK
+===================================================== */
+
+.brand h1 {
+    margin: 0;
+
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+
+    color: var(--wire-text);
+
+    white-space: nowrap;
+
+    text-shadow:
+        0 1px 12px var(--wire-text-glow);
+}
+
+.brand h1::first-letter {
+    color: var(--wire-text);
+}
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+.site-navigation {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-evenly;
+
+    flex: 1 1 auto;
+    min-width: 0;
+
+    gap: 0;
+    margin-left: -6px;
+
+    overflow: hidden;
+}
+
+/* =====================================================
+   NAV BUTTON
+===================================================== */
+.nav-button {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 50px;
+
+    padding: 0 2px;
+
+    color: var(--wire-text-muted);
+    text-decoration: none;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0;
+
+    white-space: nowrap;
+    text-align: center;
+
+    background: transparent;
+}
+
+/* =====================================================
+   NAV SEPARATOR
+===================================================== */
+.nav-button:not(:last-child)::before {
+    display: none;
+}
+
+/* =====================================================
+   NAV HOVER
+===================================================== */
+.nav-button:hover {
+    color: var(--wire-text);
+
+    background: var(--wire-hover-surface);
+}
+
+/* =====================================================
+   ACTIVE NAV
+===================================================== */
+.nav-button.active {
+    color: var(--wire-accent-bright);
+
+    text-shadow:
+    0 0 8px var(--wire-accent-glow-soft);
+}
+.nav-button.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 5px;
+    right: 5px;
+    height: 2px;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--wire-accent-bright) 20%,
+            var(--wire-accent-bright) 80%,
+            transparent
+        );
+    box-shadow:
+        0 0 8px var(--wire-accent-glow),
+        0 0 18px var(--wire-accent-glow-soft);
+}
+
+
+
+/* =====================================================
+   NAVBAR PROFILE IMAGE
+===================================================== */
+
+.profile-square img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+/* =====================================================
+   THEME TOGGLE
+===================================================== */
+
+.theme-toggle {
+    width: 25px;
+    height: 25px;
+
+    margin-left: 5px;
+    margin-right: 6px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--wire-border);
+
+    background: transparent;
+
+    color: var(--wire-accent-bright);
+
+    font-size: 15px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    border-radius: 5px;
+}
+
+.theme-toggle:hover {
+    background: var(--wire-hover-surface);
+
+    color: var(--wire-text);
+}
+
+
+
+/* =====================================================
+   HEADER ICONS
+===================================================== */
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 0 0 auto;
+    transform: translateX(-8px);
+}
+
+
+
+
+/* =====================================================
+   PROFILE FRAME
+===================================================== */
+.profile-square {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--wire-border);
+
+    clip-path:
+        polygon(
+            8px 0,
+            calc(100% - 8px) 0,
+            100% 8px,
+            100% calc(100% - 8px),
+            calc(100% - 8px) 100%,
+            8px 100%,
+            0 calc(100% - 8px),
+            0 8px
+        );
+
+    box-shadow:
+        0 0 12px var(--wire-shadow),
+        inset 0 1px 0 var(--wire-highlight);
+
+   
+}
+
+.profile-square:hover {
+    background: var(--wire-hover-surface);
+    border-color: var(--wire-accent);
+}
+
